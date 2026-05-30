@@ -1,0 +1,68 @@
+{
+  "roots": [
+    "vertex"
+  ],
+  "packages": [
+    {
+      "name": "vertex",
+      "version": "1.0.0",
+      "dependencies": [
+        "dartpy",
+        "ffi"
+      ],
+      "devDependencies": []
+    },
+    {
+      "name": "dartpy",
+      "version": "0.0.5",
+      "dependencies": [
+        "args",
+        "ffi",
+        "freezed_annotation",
+        "path"
+      ]
+    },
+    {
+      "name": "path",
+      "version": "1.9.1",
+      "dependencies": []
+    },
+    {
+      "name": "freezed_annotation",
+      "version": "2.4.4",
+      "dependencies": [
+        "collection",
+        "json_annotation",
+        "meta"
+      ]
+    },
+    {
+      "name": "args",
+      "version": "2.7.0",
+      "dependencies": []
+    },
+    {
+      "name": "ffi",
+      "version": "2.2.0",
+      "dependencies": []
+    },
+    {
+      "name": "json_annotation",
+      "version": "4.12.0",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "meta",
+      "version": "1.18.2",
+      "dependencies": []
+    },
+    {
+      "name": "collection",
+      "version": "1.19.1",
+      "dependencies": []
+    }
+  ],
+  "configVersion": 1
+}
