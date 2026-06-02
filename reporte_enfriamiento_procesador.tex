@@ -1,0 +1,370 @@
+\documentclass[12pt,a4paper]{article}
+
+% ---- Paquetes ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{booktabs}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{capt-of}
+
+% ---- Configuración de página ----
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\textit{Enfriamiento de un procesador}}
+\lhead{\small\textit{Ecuaciones Diferenciales}}
+\cfoot{\thepage}
+
+% ---- Título ----
+\title{Modelado del enfriamiento de un procesador\\mediante una ecuación diferencial de primer orden}
+\author{
+  Ingeniería en Sistemas Computacionales \\[4pt]
+  \small\textit{Ecuaciones Diferenciales} \\[8pt]
+  \textbf{Integrantes:} \\
+  Aguirre Mayahua Ricoy \\
+  Ramírez Padilla Azul Aranza \\[8pt]
+  \textbf{Grupo:} B -- 4g1 \\[4pt]
+  \textbf{Docente:} [Nombre del docente] \\[4pt]
+  \textbf{Fecha:} \today
+}
+\date{}
+
+% ======================================================================
+\begin{document}
+
+% ---- PORTADA ----
+\begin{titlepage}
+  \centering
+  \vspace*{1.5cm}
+  {\LARGE\textbf{Instituto Tecnológico de Orizaba}\par}
+  \vspace{0.8cm}
+  {\Large Ingeniería en Sistemas Computacionales\par}
+  \vspace{0.5cm}
+  {\large Ecuaciones Diferenciales\par}
+  \vspace{1.5cm}
+  {\Huge\textbf{Modelado del enfriamiento de un procesador}\par}
+  {\Huge\textbf{mediante una ecuación diferencial}\par}
+  {\Huge\textbf{de primer orden}\par}
+  \vspace{1.5cm}
+  {\Large\textbf{Proyecto Final}\par}
+  \vspace{1cm}
+  \begin{flushleft}
+    \textbf{Integrantes:}\\[4pt]
+    Aguirre Mayahua Ricoy \\[2pt]
+    Ramírez Padilla Azul Aranza \\[12pt]
+    \textbf{Grupo:} B -- 4g1 \\[4pt]
+    \textbf{Docente:} [Nombre del docente] \\[4pt]
+    \textbf{Fecha:} \today
+  \end{flushleft}
+  \vfill
+\end{titlepage}
+
+% ---- 1. INTRODUCCIÓN ----
+\section{Introducción}
+
+Un sistema dinámico es aquel cuyo estado evoluciona en el tiempo siguiendo una regla determinista. En ingeniería, muchos fenómenos físicos pueden describirse mediante sistemas dinámicos modelados con ecuaciones diferenciales. Una ecuación diferencial ordinaria (EDO) relaciona una función desconocida con sus derivadas, expresando cómo cambia dicha función respecto a una variable independiente.
+
+El enfriamiento de un procesador después de una tarea computacional intensa es un ejemplo clásico de sistema dinámico. Cuando un procesador ejecuta un programa pesado (compilar código, entrenar un modelo de inteligencia artificial, ejecutar un videojuego), su temperatura se eleva significativamente por encima de la temperatura ambiente. Al cesar la tarea, el procesador comienza a disipar calor hacia el entorno hasta aproximarse nuevamente a la temperatura ambiente. La velocidad a la que ocurre este enfriamiento depende de la diferencia térmica entre el procesador y el ambiente, lo que se describe naturalmente mediante la ley de enfriamiento de Newton, una ecuación diferencial de primer orden.
+
+En este reporte se desarrolla el modelo matemático del enfriamiento, se resuelve analíticamente, se grafica la solución y se interpretan los resultados en el contexto de la ingeniería en sistemas computacionales.
+
+% ---- 2. PLANTEAMIENTO DEL PROBLEMA ----
+\section{Planteamiento del problema}
+
+Después de ejecutar una tarea de alta demanda computacional (como compilar un programa, entrenar un modelo simple o ejecutar un videojuego), la temperatura de un procesador aumenta considerablemente. Al finalizar la tarea, el procesador comienza a enfriarse hasta aproximarse a la temperatura ambiente.
+
+Se desea estimar la temperatura del procesador en función del tiempo transcurrido después de finalizar la tarea, utilizando un modelo matemático basado en ecuaciones diferenciales.
+
+\textbf{Pregunta central:}
+\begin{quote}
+¿Cómo puede modelarse la disminución de temperatura de un procesador mediante una ecuación diferencial y qué temperatura tendrá después de cierto tiempo?
+\end{quote}
+
+% ---- 3. OBJETIVO ----
+\section{Objetivo}
+
+Aplicar una ecuación diferencial ordinaria de primer orden para modelar el enfriamiento de un procesador, resolver el problema de valor inicial, graficar la solución y analizar el comportamiento térmico del sistema, relacionando los resultados con la ingeniería en sistemas computacionales.
+
+% ---- 4. MARCO TEÓRICO ----
+\section{Marco teórico}
+
+\subsection{Ecuación diferencial ordinaria (EDO)}
+
+Una ecuación diferencial ordinaria es una ecuación que involucra una función desconocida \(y(t)\) y una o más de sus derivadas. Se expresa generalmente como:
+\[
+F\bigl(t,\,y,\,y',\,y'',\,\dots\bigr)=0
+\]
+
+\subsection{Orden de una ecuación diferencial}
+
+El orden de una EDO es el de la derivada más alta que aparece en la ecuación. Para este proyecto trabajamos con una EDO de \textbf{primer orden}, pues solo aparece la primera derivada \(\frac{dT}{dt}\).
+
+\subsection{Problema de valor inicial (PVI)}
+
+Un problema de valor inicial consiste en una EDO junto con una condición que especifica el valor de la función desconocida en un punto inicial. Su forma general es:
+\[
+\frac{dy}{dt}=f(t,y),\qquad y(t_0)=y_0
+\]
+
+\subsection{Ley de enfriamiento de Newton}
+
+La ley de enfriamiento de Newton establece que la tasa de cambio de la temperatura de un objeto es proporcional a la diferencia entre su temperatura y la temperatura del ambiente que lo rodea:
+\[
+\frac{dT}{dt} = -k\,(T - T_a)
+\]
+donde:
+\begin{itemize}
+  \item \(T(t)\) es la temperatura del objeto en el instante \(t\),
+  \item \(T_a\) es la temperatura ambiente (constante),
+  \item \(k > 0\) es la constante de enfriamiento (depende de las propiedades físicas del sistema),
+  \item El signo negativo indica que la temperatura disminuye cuando \(T > T_a\).
+\end{itemize}
+
+% ---- 5. MODELO MATEMÁTICO ----
+\section{Modelo matemático}
+
+\subsection{Variables y parámetros}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cll}
+    \toprule
+    \textbf{Variable} & \textbf{Significado} & \textbf{Unidad} \\
+    \midrule
+    \(t\)   & Tiempo transcurrido después de finalizar la tarea & min \\
+    \(T(t)\) & Temperatura del procesador en el instante \(t\)    & \({}^{\circ}\mathrm{C}\) \\
+    \(T_a\)  & Temperatura ambiente                             & \({}^{\circ}\mathrm{C}\) \\
+    \(k\)    & Constante de enfriamiento                       & \(\mathrm{min}^{-1}\) \\
+    \bottomrule
+  \end{tabular}
+  \caption{Identificación de variables y parámetros del modelo.}
+\end{table}
+
+\subsection{Ecuación diferencial}
+
+Aplicando la ley de enfriamiento de Newton al caso del procesador:
+\[
+\frac{dT}{dt} = -k\,(T - T_a)
+\]
+
+Esta ecuación es de \textbf{primer orden} (la derivada más alta es la primera), \textbf{lineal} (la variable \(T\) y su derivada aparecen con exponente 1) y \textbf{separable} (se pueden separar las variables \(T\) y \(t\) en distintos lados de la igualdad).
+
+\subsection{Problema de valor inicial}
+
+Con los datos proporcionados:
+\[
+T_0 = 80\,^{\circ}\mathrm{C},\qquad T_a = 30\,^{\circ}\mathrm{C},\qquad k = 0.18\,\mathrm{min}^{-1}
+\]
+
+El problema de valor inicial queda:
+\[
+\boxed{\displaystyle \frac{dT}{dt} = -0.18\,(T - 30)},\qquad \boxed{T(0) = 80}
+\]
+
+% ---- 6. SOLUCIÓN ANALÍTICA ----
+\section{Solución analítica}
+
+\subsection{Solución por separación de variables}
+
+Partimos de la EDO:
+\[
+\frac{dT}{dt} = -k\,(T - T_a)
+\]
+
+\textbf{Paso 1:} Separamos las variables \(T\) y \(t\):
+\[
+\frac{dT}{T - T_a} = -k\,dt
+\]
+
+\textbf{Paso 2:} Integramos ambos lados:
+\[
+\int \frac{dT}{T - T_a} = \int -k\,dt
+\]
+\[
+\ln|T - T_a| = -k t + C
+\]
+
+\textbf{Paso 3:} Despejamos \(T(t)\) aplicando la exponencial:
+\[
+T - T_a = e^{-k t + C} = e^{C}\,e^{-k t}
+\]
+\[
+T(t) = T_a + C_1\,e^{-k t},\qquad\text{donde } C_1 = e^{C}
+\]
+
+\textbf{Paso 4:} Aplicamos la condición inicial \(T(0)=T_0\):
+\[
+T(0) = T_a + C_1 = T_0 \quad\Longrightarrow\quad C_1 = T_0 - T_a
+\]
+
+Por lo tanto, la \textbf{solución general} del modelo de enfriamiento es:
+\[
+\boxed{T(t) = T_a + (T_0 - T_a)\,e^{-k t}}
+\]
+
+\subsection{Solución particular con los datos del problema}
+
+Sustituyendo \(T_0 = 80\), \(T_a = 30\) y \(k = 0.18\):
+\[
+\boxed{T(t) = 30 + 50\,e^{-0.18\,t}}
+\]
+
+\subsection{Cálculo de temperaturas para tiempos específicos}
+
+\begin{align*}
+T(5)  &= 30 + 50\,e^{-0.18(5)}  = 30 + 50\,e^{-0.9}  \approx 30 + 50(0.40657) \approx \boxed{50.3\,^{\circ}\mathrm{C}} \\[4pt]
+T(10) &= 30 + 50\,e^{-0.18(10)} = 30 + 50\,e^{-1.8}  \approx 30 + 50(0.16530) \approx \boxed{38.3\,^{\circ}\mathrm{C}} \\[4pt]
+T(15) &= 30 + 50\,e^{-0.18(15)} = 30 + 50\,e^{-2.7}  \approx 30 + 50(0.06721) \approx \boxed{33.4\,^{\circ}\mathrm{C}}
+\end{align*}
+
+% ---- 7. RESULTADOS ----
+\section{Resultados}
+
+\subsection{Tabla de valores}
+
+Evaluamos \(T(t) = 30 + 50e^{-0.18t}\) para distintos tiempos:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    \(t\) (min) & \(T(t)\) (\({}^\circ\mathrm{C}\)) \\
+    \midrule
+    0  & 80.0 \\
+    2  & 64.9 \\
+    4  & 54.3 \\
+    5  & 50.3 \\
+    6  & 46.9 \\
+    8  & 41.9 \\
+    10 & 38.3 \\
+    12 & 35.8 \\
+    15 & 33.4 \\
+    20 & 31.7 \\
+    30 & 30.4 \\
+    60 & 30.0 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Temperatura del procesador en función del tiempo.}
+\end{table}
+
+\subsection{Gráfica de la solución}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.2]
+    \begin{axis}[
+      xlabel={Tiempo \(t\) (min)},
+      ylabel={Temperatura \(T(t)\) (\({}^\circ\)C)},
+      title={Enfriamiento del procesador -- Ley de Newton},
+      xmin=0, xmax=35,
+      ymin=25, ymax=85,
+      grid=both,
+      grid style={gray!30},
+      legend pos=north east,
+      width=13cm,
+      height=8cm,
+      tick label style={font=\small},
+      label style={font=\small},
+    ]
+    % Solución analítica
+    \addplot[domain=0:35, thick, blue, samples=200]
+      {30 + 50*exp(-0.18*x)};
+    \addlegendentry{\(T(t)=30+50e^{-0.18t}\)}
+
+    % Asíntota horizontal
+    \addplot[domain=0:35, dashed, red, thick]
+      {30};
+    \addlegendentry{\(T_a = 30\,^{\circ}\)C (asíntota)}
+
+    % Datos simulados
+    \addplot[only marks, mark=*, mark size=2.5, black]
+      coordinates {
+        (0,80.0) (2,64.9) (4,54.3) (5,50.3)
+        (6,46.9) (8,41.9) (10,38.3) (12,35.8) (15,33.4)
+      };
+    \addlegendentry{Datos simulados}
+
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de la temperatura del procesador en función del tiempo. La curva azul muestra la solución analítica; los puntos negros son los datos simulados; la línea roja discontinua es la temperatura ambiente (\(30\,^{\circ}\)C) a la que el sistema tiende asintóticamente.}
+\end{figure}
+
+\subsection{Verificación con datos simulados}
+
+Los datos simulados proporcionados coinciden con los valores calculados con la fórmula \(T(t)=30+50e^{-0.18t}\), lo que valida el modelo:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    \(t\) (min) & \(T_{\text{simulada}}\) (\({}^\circ\)C) & \(T_{\text{calculada}}\) (\({}^\circ\)C) & Diferencia \\
+    \midrule
+    0  & 80.0 & 80.0 & 0.0 \\
+    2  & 64.9 & 64.9 & 0.0 \\
+    4  & 54.3 & 54.3 & 0.0 \\
+    6  & 46.9 & 46.9 & 0.0 \\
+    8  & 41.9 & 41.9 & 0.0 \\
+    10 & 38.3 & 38.3 & 0.0 \\
+    12 & 35.8 & 35.8 & 0.0 \\
+    15 & 33.4 & 33.4 & 0.0 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Comparación entre datos simulados y valores calculados con el modelo analítico.}
+\end{table}
+
+% ---- 8. DISCUSIÓN ----
+\section{Discusión}
+
+La curva de enfriamiento obtenida revela varias características importantes:
+
+\begin{itemize}
+  \item \textbf{Enfriamiento rápido inicial:} En los primeros minutos (\(0 \leq t \leq 5\)), la temperatura desciende abruptamente de \(80\,^{\circ}\mathrm{C}\) a \(50.3\,^{\circ}\mathrm{C}\). Esto ocurre porque la diferencia entre la temperatura del procesador y la ambiente es grande (\(T - T_a = 50\,^{\circ}\mathrm{C}\) inicialmente), lo que genera una alta tasa de transferencia de calor.
+
+  \item \textbf{Enfriamiento progresivamente más lento:} A medida que el procesador se enfría, la diferencia térmica disminuye y, por tanto, la tasa de enfriamiento se reduce. Entre \(t=10\) y \(t=15\) minutos, la temperatura solo baja de \(38.3\,^{\circ}\mathrm{C}\) a \(33.4\,^{\circ}\mathrm{C}\).
+
+  \item \textbf{Asíntota en la temperatura ambiente:} La función \(T(t)\) tiende a \(T_a = 30\,^{\circ}\mathrm{C}\) cuando \(t \to \infty\), pero nunca alcanza exactamente ese valor en un tiempo finito (asíntota horizontal). Desde la perspectiva computacional, después de aproximadamente 30 minutos la temperatura se estabiliza prácticamente en el valor ambiente.
+
+  \item \textbf{Implicaciones computacionales:} La constante de enfriamiento \(k\) depende de factores como el material del disipador, el flujo de aire del ventilador y la pasta térmica. Un valor mayor de \(k\) significa que el procesador se enfría más rápido. En el diseño de sistemas de refrigeración, se busca maximizar \(k\) mediante mejores disipadores y ventiladores para evitar el sobrecalentamiento en cargas de trabajo sucesivas.
+\end{itemize}
+
+Los resultados obtenidos coinciden exactamente con la tabla de datos simulados, lo que confirma la validez del modelo de Newton para describir el enfriamiento del procesador en este escenario.
+
+% ---- 9. CONCLUSIONES ----
+\section{Conclusiones}
+
+El desarrollo de este proyecto permitió alcanzar las siguientes conclusiones:
+
+\begin{enumerate}
+  \item La ley de enfriamiento de Newton proporciona un modelo matemático simple pero preciso para describir la evolución térmica de un procesador después de una tarea de alta demanda computacional. La ecuación diferencial de primer orden \(\frac{dT}{dt} = -k(T - T_a)\) captura adecuadamente la física del fenómeno.
+
+  \item La solución analítica \(T(t) = 30 + 50e^{-0.18t}\) permitió calcular la temperatura del procesador en cualquier instante, mostrando que después de 5 minutos el procesador alcanza aproximadamente \(50.3\,^{\circ}\mathrm{C}\), a los 10 minutos \(38.3\,^{\circ}\mathrm{C}\) y a los 15 minutos \(33.4\,^{\circ}\mathrm{C}\).
+
+  \item El comportamiento asintótico de la solución refleja que el procesador nunca alcanza exactamente la temperatura ambiente, pero se aproxima a ella después de aproximadamente 30 minutos, lo cual es coherente con sistemas reales de enfriamiento pasivo.
+
+  \item Las ecuaciones diferenciales son una herramienta fundamental en ingeniería en sistemas computacionales. No solo permiten modelar fenómenos térmicos, sino también problemas de dinámica de redes, crecimiento de datos, algoritmos de aprendizaje automático, circuitos eléctricos y muchos otros ámbitos de la disciplina.
+
+  \item El uso de herramientas digitales (en este caso, \LaTeX{} con \texttt{pgfplots} para la gráfica y Python/Excel para cálculos) facilita la visualización y validación de los modelos matemáticos, integrando las TIC en el proceso de aprendizaje.
+\end{enumerate}
+
+% ---- 10. REFERENCIAS ----
+\section{Referencias}
+
+\begin{enumerate}
+  \item Zill, D. G. (2018). \textit{Ecuaciones Diferenciales con Aplicaciones de Modelado} (10.ª ed.). Cengage Learning.
+  \item Newton, I. (1701). \textit{Scala graduum caloris} (Escala de grados de calor). Philosophical Transactions.
+  \item Boyce, W. E. \& DiPrima, R. C. (2017). \textit{Ecuaciones Diferenciales y Problemas con Valores en la Frontera} (11.ª ed.). Wiley.
+  \item Software utilizado: \LaTeX{} con los paquetes \texttt{pgfplots}, \texttt{booktabs}, \texttt{geometry} para la elaboración del reporte y generación de la gráfica.
+  \item Programa de la asignatura Ecuaciones Diferenciales -- Ingeniería en Sistemas Computacionales.
+\end{enumerate}
+
+\end{document}
