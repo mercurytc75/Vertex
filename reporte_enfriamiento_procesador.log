@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.24)  30 MAY 2026 17:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.24)  30 MAY 2026 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,39 +840,39 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks48
 \@floatcapt=\box68
 )
-(C:\Users\mercu\AppData\Local\Programs\MiKTeX\tex/latex/capt-of\capt-of.sty
-Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
-)
 (C:\Users\mercu\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count346
+) (reporte_enfriamiento_procesador.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 11.
 )
-No file reporte_enfriamiento_procesador.aux.
 \openout1 = `reporte_enfriamiento_procesador.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Info: Redefining \. on input line 43.
-LaTeX Info: Redefining \% on input line 43.
-Package babel Info: 'spanish' activates 'spanish' shorthands.
-(babel)             Reported on input line 43.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Info: Redefining \. on input line 28.
+LaTeX Info: Redefining \% on input line 28.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -936,21 +936,23 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-Package hyperref Info: Link coloring OFF on input line 43.
+Package hyperref Info: Link coloring OFF on input line 28.
+(reporte_enfriamiento_procesador.out) (reporte_enfriamiento_procesador.out)
 \@outlinefile=\write4
 \openout4 = `reporte_enfriamiento_procesador.out'.
+
 
 [1
 
 {C:/Users/mercu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 103
-.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
+
 
 (C:\Users\mercu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 103
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
+
 
 (C:\Users\mercu\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -967,8 +969,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.106 \]
-         [1]
+l.89 \]
+        [1]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -981,7 +983,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.158 \]
+l.141 \]
         ]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1003,7 +1005,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.301 
+l.290 
       ]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1017,13 +1019,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.332 
+l.326 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.332 
+l.326 
       ]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1033,7 +1035,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [6]
-Overfull \hbox (0.11685pt too wide) in paragraph at lines 367--368
+Overfull \hbox (0.11685pt too wide) in paragraph at lines 404--406
 []\T1/cmr/m/n/12 Programa de la asig-na-tu-ra Ecua-cio-nes Di-fe-ren-cia-les --
  In-ge-nie-ría en Sis-te-mas Compu-
  []
@@ -1053,33 +1055,25 @@ LaTeX Info: Redefining \% on input line 11.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-Package rerunfilecheck Warning: File `reporte_enfriamiento_procesador.out' has 
-changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `reporte_enfriamiento_procesador.out
-':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  55FE8FB2B872DF0EF34FC5BACBAEEB16;4059.
+Package rerunfilecheck Info: File `reporte_enfriamiento_procesador.out' has not
+ changed.
+(rerunfilecheck)             Checksum: 55FE8FB2B872DF0EF34FC5BACBAEEB16;4059.
  ) 
 Here is how much of TeX's memory you used:
- 33309 strings out of 467871
- 774132 string characters out of 5418376
- 1328530 words of memory out of 5000000
- 61638 multiletter control sequences out of 15000+600000
+ 33319 strings out of 467871
+ 774137 string characters out of 5418376
+ 1329147 words of memory out of 5000000
+ 61646 multiletter control sequences out of 15000+600000
  645960 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,118p,766b,2294s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecti1200.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
-/dpi600\ectt1200.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecrm0800.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fon
+0\ectt1200.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecrm0800.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
+pen/ec/dpi600\ecrm1095.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fonts/pk/
+ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\mercu\AppData\Local\MiKTeX\fon
 ts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\mercu\AppData\Local\MiKT
 eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\mercu\AppData\Loca
 l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\mercu\AppDat
@@ -1099,9 +1093,9 @@ ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/merc
 u/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
 sers/mercu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.p
 fb>
-Output written on reporte_enfriamiento_procesador.pdf (8 pages, 255931 bytes).
+Output written on reporte_enfriamiento_procesador.pdf (8 pages, 266181 bytes).
 PDF statistics:
- 540 PDF objects out of 1000 (max. 8388607)
+ 615 PDF objects out of 1000 (max. 8388607)
  45 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 
