@@ -1,0 +1,336 @@
+\documentclass[9pt,a4paper]{article}
+
+% ---- Paquetes ----
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{physics}
+
+% Compactar espaciado
+\setlength{\parskip}{1pt}
+\setlength{\parindent}{0pt}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{5pt}{2pt}
+\titlespacing*{\subsection}{0pt}{3pt}{1pt}
+
+\title{\textbf{Separata de Estudio}\\[2pt]
+\large Resolución de Sistemas de ED Lineales 2×2}
+\author{Métodos: Eliminación, Operador Diferencial y Transformada de Laplace}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ============================================================
+\section*{Sistema general}
+% ============================================================
+
+Todo sistema lineal de dos ecuaciones con coeficientes constantes se escribe como:
+
+\[
+\boxed{
+\begin{cases}
+x'(t) = a_{11}\,x + a_{12}\,y \\[2pt]
+y'(t) = a_{21}\,x + a_{22}\,y
+\end{cases}
+\qquad\text{con}\qquad
+\begin{aligned}
+x(0) &= x_0 \\
+y(0) &= y_0
+\end{aligned}
+}
+\]
+
+\smallskip
+Los tres métodos siguientes funcionan para \textbf{cualquier} sistema de esta forma. Solo cambian los coeficientes \(a_{ij}\) y las condiciones iniciales.
+
+
+% ============================================================
+\section{Método 1: Eliminación}
+% ============================================================
+
+\subsection{Paso 1 --- Despejar una variable}
+
+De la primera ecuación, despejamos \(y\) en términos de \(x\) y \(x'\):
+
+\[
+y = \frac{x' - a_{11}\,x}{a_{12}}, \qquad a_{12} \neq 0
+\]
+
+Si \(a_{12} = 0\), se despeja de la segunda ecuación.
+
+\subsection{Paso 2 --- Derivar}
+
+Derivamos la expresión obtenida:
+
+\[
+y' = \frac{x'' - a_{11}\,x'}{a_{12}}
+\]
+
+\subsection{Paso 3 --- Sustituir en la otra ecuación}
+
+Reemplazamos \(y\) e \(y'\) en la segunda ecuación del sistema:
+
+\[
+\frac{x'' - a_{11}\,x'}{a_{12}} = a_{21}\,x + a_{22}\left(\frac{x' - a_{11}\,x}{a_{12}}\right)
+\]
+
+\subsection{Paso 4 --- Obtener una EDO de segundo orden}
+
+Multiplicamos por \(a_{12}\) y agrupamos términos:
+
+\[
+x'' - a_{11}\,x' = a_{12}\,a_{21}\,x + a_{22}\,x' - a_{22}\,a_{11}\,x
+\]
+
+\[
+\boxed{x'' - (a_{11}+a_{22})\,x' + (a_{11}a_{22} - a_{12}a_{21})\,x = 0}
+\]
+
+Es decir:
+
+\[
+x'' - (\text{traza})\,x' + (\text{determinante})\,x = 0
+\]
+
+\subsection{Paso 5 --- Resolver la EDO homogénea}
+
+Ecuación característica:
+
+\[
+r^{2} - (a_{11}+a_{22})\,r + (a_{11}a_{22} - a_{12}a_{21}) = 0
+\]
+
+Según el discriminante \(\Delta = (a_{11}+a_{22})^{2} - 4(a_{11}a_{22} - a_{12}a_{21})\):
+
+\begin{itemize}
+  \item[\textbf{Caso 1}] \(\Delta > 0\): dos raíces reales distintas \(r_1 \neq r_2\)
+  \[
+  x(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}
+  \]
+
+  \item[\textbf{Caso 2}] \(\Delta = 0\): raíz real doble \(r\)
+  \[
+  x(t) = C_1 e^{r t} + C_2 t e^{r t}
+  \]
+
+  \item[\textbf{Caso 3}] \(\Delta < 0\): raíces complejas \(r = \alpha \pm i\beta\)
+  \[
+  x(t) = e^{\alpha t}\bigl(C_1 \cos\beta t + C_2 \sin\beta t\bigr)
+  \]
+\end{itemize}
+
+\subsection{Paso 6 --- Hallar la otra variable}
+
+Volvemos a la relación del Paso 1:
+
+\[
+y = \frac{x' - a_{11}\,x}{a_{12}}
+\]
+
+Derivamos \(x(t)\) obtenida en el Paso 5, sustituimos y simplificamos.
+
+\subsection{Paso 7 --- Solución final}
+
+\[
+\boxed{
+\begin{aligned}
+x(t) &= \text{solución del Paso 5} \\
+y(t) &= \text{resultado del Paso 6}
+\end{aligned}
+}
+\]
+
+Si hay condiciones iniciales, se resuelve para \(C_1, C_2\).
+
+% ============================================================
+\section{Método 2: Operador Diferencial}
+% ============================================================
+
+\subsection{Paso 1 --- Escribir con el operador \(D = \frac{d}{dt}\)}
+
+\[
+\begin{aligned}
+(D - a_{11})\,x - a_{12}\,y &= 0 \\
+-a_{21}\,x + (D - a_{22})\,y &= 0
+\end{aligned}
+\]
+
+\subsection{Paso 2 --- Formar la matriz del sistema}
+
+\[
+\begin{pmatrix}
+D - a_{11} & -a_{12} \\
+-a_{21}    & D - a_{22}
+\end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix}
+=
+\begin{pmatrix} 0 \\ 0 \end{pmatrix}
+\]
+
+\subsection{Paso 3 --- Calcular el determinante operacional}
+
+\[
+\Delta = (D - a_{11})(D - a_{22}) - (-a_{12})(-a_{21})
+       = D^{2} - (a_{11}+a_{22})D + (a_{11}a_{22} - a_{12}a_{21})
+\]
+
+\subsection{Paso 4 --- Ecuación característica}
+
+\[
+r^{2} - (a_{11}+a_{22})\,r + (a_{11}a_{22} - a_{12}a_{21}) = 0
+\]
+
+(Idéntica a la de eliminación.)
+
+\subsection{Paso 5 --- Resolver raíces}
+
+Mismos 3 casos que en eliminación (Paso 5 del Método 1).
+
+\subsection{Paso 6 --- Solución general para \(x(t)\)}
+
+Según el caso de raíces:
+
+\[
+x(t) =
+\begin{cases}
+C_1 e^{r_1 t} + C_2 e^{r_2 t}, & \text{raíces reales distintas} \\[2pt]
+C_1 e^{r t} + C_2 t e^{r t},   & \text{raíz real doble} \\[2pt]
+e^{\alpha t}(C_1\cos\beta t + C_2\sin\beta t), & \text{raíces complejas}
+\end{cases}
+\]
+
+\subsection{Paso 7 --- Sustituir en una ecuación original}
+
+Usamos, por ejemplo, la primera ecuación:
+
+\[
+y = (D - a_{11})\,x = x' - a_{11}\,x
+\]
+
+Derivamos \(x(t)\) y calculamos \(y\).
+
+\subsection{Paso 8 --- Relacionar constantes (si es necesario)}
+
+En algunos casos al simplificar \(y\) aparecen las mismas constantes \(C_1, C_2\) ya combinadas. Se dejan expresadas.
+
+\subsection{Paso 9 --- Solución final}
+
+\[
+\boxed{
+\begin{aligned}
+x(t) &= \text{del Paso 6} \\
+y(t) &= \text{del Paso 7}
+\end{aligned}
+}
+\]
+
+% ============================================================
+\section{Método 3: Transformada de Laplace}
+% ============================================================
+
+\subsection{Paso 1 --- Aplicar Laplace a cada ecuación}
+
+Recordando \(\mathcal{L}\{x'\} = sX(s) - x(0)\):
+
+\[
+\begin{aligned}
+sX - x_0 &= a_{11}X + a_{12}Y \\
+sY - y_0 &= a_{21}X + a_{22}Y
+\end{aligned}
+\]
+
+\subsection{Paso 2 --- Reordenar el sistema algebraico}
+
+\[
+\begin{cases}
+(s - a_{11})\,X - a_{12}\,Y = x_0 \\[2pt]
+-a_{21}\,X + (s - a_{22})\,Y = y_0
+\end{cases}
+\]
+
+\subsection{Paso 3 --- Resolver para \(X(s)\) y \(Y(s)\)}
+
+Se puede resolver por:
+\begin{itemize}
+  \item Sustitución (despejar una variable de una ecuación y reemplazar en la otra)
+  \item Regla de Cramer:
+  \[
+  \Delta(s) = (s - a_{11})(s - a_{22}) - a_{12}a_{21}
+  \]
+  \[
+  X(s) = \frac{
+    \begin{vmatrix}
+    x_0 & -a_{12} \\
+    y_0 & s - a_{22}
+    \end{vmatrix}
+  }{\Delta(s)},
+  \qquad
+  Y(s) = \frac{
+    \begin{vmatrix}
+    s - a_{11} & x_0 \\
+    -a_{21}    & y_0
+    \end{vmatrix}
+  }{\Delta(s)}
+  \]
+\end{itemize}
+
+\subsection{Paso 4 --- Simplificar con fracciones parciales}
+
+Se descompone cada expresión en fracciones simples según las raíces del polinomio \(\Delta(s)\):
+
+\[
+\frac{P(s)}{(s - r_1)(s - r_2)} = \frac{A}{s - r_1} + \frac{B}{s - r_2}
+\]
+
+\[
+\frac{P(s)}{(s - r)^2} = \frac{A}{s - r} + \frac{B}{(s - r)^2}
+\]
+
+\[
+\frac{P(s)}{(s - \alpha)^2 + \beta^2} = \frac{A(s - \alpha) + B\beta}{(s - \alpha)^2 + \beta^2}
+\]
+
+\subsection{Paso 5 --- Aplicar transformada inversa}
+
+Usamos la tabla de transformadas inversas:
+
+\[
+\begin{aligned}
+\mathcal{L}^{-1}\left\{\frac{1}{s - r}\right\} &= e^{r t} \\[2pt]
+\mathcal{L}^{-1}\left\{\frac{1}{(s - r)^2}\right\} &= t e^{r t} \\[2pt]
+\mathcal{L}^{-1}\left\{\frac{s - \alpha}{(s - \alpha)^2 + \beta^2}\right\} &= e^{\alpha t}\cos\beta t \\[2pt]
+\mathcal{L}^{-1}\left\{\frac{\beta}{(s - \alpha)^2 + \beta^2}\right\} &= e^{\alpha t}\sin\beta t
+\end{aligned}
+\]
+
+\subsection{Paso 6 --- Solución particular}
+
+\[
+\boxed{
+\begin{aligned}
+x(t) &= \mathcal{L}^{-1}\{X(s)\} \\
+y(t) &= \mathcal{L}^{-1}\{Y(s)\}
+\end{aligned}
+}
+\]
+
+% ============================================================
+\section*{Resumen: cómo elegir el método}
+% ============================================================
+
+\begin{tabular}{p{3cm} p{10cm}}
+\textbf{Método} & \textbf{Cuándo usarlo} \\ \hline
+Eliminación     & Cuando una variable se despeja fácilmente. Bueno para sistemas pequeños (2×2). No necesita condiciones iniciales. \\
+Operador \(D\)  & Rápido cuando el determinante operacional se calcula sin esfuerzo. Muy sistemático, fácil de recordar. No necesita condiciones iniciales. \\
+Laplace         & \textbf{Único} que da la solución particular directamente con las CI. Ideal si el examen \textbf{pide} Laplace. Útil cuando hay términos no homogéneos.
+\end{tabular}
+
+\medskip
+\centerline{\textbf{¡Los tres métodos deben dar la misma solución!}}
+\centerline{Úsalo como verificación: si discrepan, revisa las cuentas.}
+
+\end{document}
